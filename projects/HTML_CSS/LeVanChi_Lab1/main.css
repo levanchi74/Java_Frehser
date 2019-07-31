@@ -1,0 +1,215 @@
+/* =================Bai 1, 2================ */
+
+
+.text-right{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-underline{
+    text-decoration: underline;
+}
+.text-bold{
+    font-weight: 600;
+}
+.tittle{
+    color: #006600;
+}
+.blue{
+    color: #0000FF;
+}
+.sub-tittle{
+    color: #FF3399;
+    background-color: #FECFFD;
+}
+.content-poem{
+    background-color: #FFFFCC;
+    font-style: italic;
+}
+.content-poem hr{
+    width: 15%;
+}
+.para1{
+    color:#0000FF;
+}
+.para2{
+    color: red;
+}
+.para3{
+    color: #006600;
+}
+/* ==================Bai 3=============== */
+
+.b3-body{
+    background-color: #A06D21;
+    color: #FFFFFF;
+    background-image : url("./b3-bg.jpg");
+    background-attachment: fixed;
+    background-position:center;
+    /* transform: translate(-50%, -50%); */
+    background-repeat:no-repeat;
+}
+.b3-tittle{
+    color: #FFCC00;
+}
+
+/* ==================Bai 4=============== */
+.b4-body{
+    background-image: url("./b4-bg.jpg");
+    background-repeat: repeat;
+    overflow: auto;
+}
+.b4-tittle{
+    color: #008888;
+
+}
+.b4-para1{
+    color: #ffffff;
+    background-color: #339999;
+    font-style: italic;
+    font-weight: 600;
+}
+.b4-para2{
+    color: #339999;
+}
+/* ==================Bai 5=============== */
+
+.b5-tittle{
+    color: #008888;
+}
+.b5-pt{
+    color: #FF0000;
+}
+.b5-code{
+    background-color: #CCCCCC;
+    color: #0000CC;
+}
+
+/* ==================Bai 6=============== */
+.b6-tittle{
+    color: orange;
+    border-style: double;
+    border-color: orange;
+}
+.b6-first-letter{
+    font-size: 50px;
+    font-weight: 600;
+    color: darkred;
+}
+.b6-sub-tittle{
+    
+    background-color: orangered;    
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+.b6-text-country{
+    color: darkred;
+}
+.b6-text-bg{
+    background-color: yellow;
+}
+
+/* ==================Bai 7=============== */
+
+.b7-wrapper-img{
+    float: left;
+    width: 40%;
+    text-align: center;
+}
+.b7-wrapper-content{
+    float:left;
+    width: 60%;
+}
+.b7-img{
+
+    height: 400px;
+    width: 300px;
+}
+.b7-tittle{
+    color: #FF3399;
+}
+.b7-sub-tittle{
+    display: inline;
+    background-color: #FF3399;
+    color: #ffffff;
+    
+}
+.b7-wrapper-cpright{
+    margin-top: 40px;
+}
+.b7-cpright{
+    
+    background-color: #FECFFD;
+}
+.b7-ul-square{
+    list-style-type: square;
+}
+.b7-line{
+    margin: 40px 0px;
+}
+/* ==================Bai 8=============== */
+.b8-body{
+    background-color: #FFEDCA;
+}
+
+.b8-wrapper-img{
+    float: left;
+    width: 40%;
+    text-align: center;
+    padding-top: 80px;
+}
+.b8-wrapper-content{
+    float:left;
+    width: 60%;
+}
+.b8-img{
+
+    height: 400px;
+    width: 300px;
+}
+.b8-foods{
+    width: 80%;
+    border-collapse: collapse;
+}
+.b8-foods tr{
+    text-align: left;
+}
+.b8-foods td , .b8-foods th {
+    border: 1px solid violet;
+    padding: 8px;
+}
+.b8-foods th{
+    background-color: #CC6600;
+}
+
+.b8-foods tr:nth-child(even){
+    background-color: #ffffff;
+}
+.b8-foods td:first-child{
+    text-align: center;
+}
+
+/* ==================Bai 9=============== */
+.b9-tittle{
+    color: #CC0033;
+}
+
+.b9-table{
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+.b9-table td,.b9-table th {
+    border: 1px solid violet;
+    padding: 8px;
+}
+
+.b9-table th{
+    background-color: #CC0033;
+    color: #FFFFFF;
+}
+.b9-color-violet{
+    color: violet;
+}

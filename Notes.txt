@@ -1,0 +1,18 @@
+﻿Test: 
+- đặt tên ( tránh keyword )
+
+
+Notes: 
+
+Modifiers sự khác nhau
+Static trong đa luồng ( syschronized )
+
+- Biến static đi theo class 
+
+A a = new B();
+a.j -> gọi biến static j ở class A ( nếu j non static thì gọi ở B )
+git quiz
+
+object ko  compare  == 
+String str = "A";
+String str2 = "A"
