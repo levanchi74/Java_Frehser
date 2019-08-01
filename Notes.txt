@@ -16,3 +16,7 @@ git quiz
 object ko  compare  == 
 String str = "A";
 String str2 = "A"
+
+
+
+https://www.javatpoint.com/java-jdbc
