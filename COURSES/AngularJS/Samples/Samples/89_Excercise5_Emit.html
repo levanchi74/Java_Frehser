@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        div {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <p>Root Scope Id: {{$id}}</p>
+        <p>{{rootData.messageLogs}}</p>
+        <div ng-controller="GrandParentController">
+            <p>GrandParent Scope Id: {{$id}}</p>
+            <p>{{grandParentData.messageLogs}}</p>
+            <div ng-controller="Parent1Controller">
+                <p>Parent1 Scope Id: {{$id}}</p>
+                <p>{{parentData.messageLogs}}</p>
+                <div ng-controller="Child1Controller">
+                    <p>Child1 Scope Id: {{$id}}</p>
+                    <p>{{childData.messageLogs}}</p>
+                    <input name="txtText" type="text" ng-model="childData.message" />
+                    <button name="btnEmitEvent" type="button" ng-click="btnEmitEvent_Click()">Emit Event Button</button>
+                </div>
+            </div>
+            <div ng-controller="Parent2Controller">
+                <p>Parent2 Scope Id: {{$id}}</p>
+                <p>{{parentData.messageLogs}}</p>
+                <div ng-controller="Child2Controller">
+                    <p>Child2 Scope Id: {{$id}}</p>
+                    <p>{{childData.messageLogs}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Excercise 5 - $emit";
+            $rootScope.rootData = {
+                message: "",
+                messageLogs: ""
+            };
+            
+            $rootScope.$on("btnEmitEvent", function(event, data) {
+                $rootScope.rootData.messageLogs += "[Event Name: " + event.name + ". Data: " + data + ".]";
+            });
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.GrandParentController = ['$scope', function($scope) {
+            $scope.grandParentData = {
+                message: "",
+                messageLogs: ""
+            };
+            
+            $scope.$on("btnEmitEvent", function(event, data) {
+                $scope.grandParentData.messageLogs += "[Event Name: " + event.name + ". Data: " + data + ".]";
+            });
+        }];
+
+        controllers.Parent1Controller = ['$scope', function($scope) {
+            $scope.parentData = {
+                message: "",
+                messageLogs: ""
+            };
+            
+            $scope.$on("btnEmitEvent", function(event, data) {
+                $scope.parentData.messageLogs += "[Event Name: " + event.name + ". Data: " + data + ".]";
+            });
+        }];
+        
+        controllers.Parent2Controller = ['$scope', function($scope) {
+            $scope.parentData = {
+                message: "",
+                messageLogs: ""
+            };
+            
+            $scope.$on("btnEmitEvent", function(event, data) {
+                $scope.parentData.messageLogs += "[Event Name: " + event.name + ". Data: " + data + ".]";
+            });
+        }];
+        
+        controllers.Child1Controller = ['$scope', function($scope) {
+            $scope.childData = {
+                message: "Child message",
+                messageLogs: ""
+            };
+            
+            $scope.btnEmitEvent_Click = function() {
+                $scope.$emit("btnEmitEvent", $scope.childData.message)
+            };
+        }];
+        
+        controllers.Child2Controller = ['$scope', function($scope) {
+            $scope.childData = {
+                message: "Child message",
+                messageLogs: ""
+            };
+            
+            $scope.$on("btnEmitEvent", function(event, data) {
+                $scope.childData.messageLogs += "[Event Name: " + event.name + ". Data: " + data + ".]";
+            });
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <my-test-directive></my-test-directive>
+        <my-test-directive></my-test-directive>
+        <my-test-directive></my-test-directive>
+        <my-test-directive></my-test-directive>
+        <my-test-directive></my-test-directive>
+        <my-test-directive></my-test-directive>
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Custom Directive";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Custom Directive code Begin -->
+    <script>
+        myApp.directive('myTestDirective', function() {
+            return {
+                retrict: "E",
+                template: "<h1>Hello World!</h1>"
+            };
+        });
+    </script>
+    <!-- Custom Directive code Begin -->
+    <!-- Application javascript code End -->
+</body>
+</html>

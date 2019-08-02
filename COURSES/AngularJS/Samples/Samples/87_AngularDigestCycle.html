@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div>
+            <p>Status is {{status}}</p>
+        </div>
+        <hr />
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Angular Digest Cycle";
+            
+            $rootScope.$watch('status', function(val) {
+                console.log('You are now with status: ' + val);
+            });
+            
+            //$rootScope.status = "Status 1";
+            //$rootScope.status = "Status 2";
+            //$rootScope.status = "Status 3";
+            
+            $rootScope.$apply(function() {
+                $rootScope.status = "Status 1";
+            });
+            
+            $rootScope.$apply(function() {
+                $rootScope.status = "Status 2";
+            });
+            
+            $rootScope.$apply(function() {
+                $rootScope.status = "Status 3";
+            });
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Application javascript code End -->
+</body>
+</html>

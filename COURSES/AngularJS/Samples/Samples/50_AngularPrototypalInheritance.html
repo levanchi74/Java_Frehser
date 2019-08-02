@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body id="bodyApp" ng-app="myApp" onload="onPageLoad();">
+    <div id="divController" ng-controller="loginCheckController">
+        <p>ng controller scope: {{loginData}}</p>
+        <div id="divSwitch" ng-switch on="loginData">
+            <div id="divLogin" ng-switch-when="false" ng-include="'login'"></div>
+            <div id="divLogout" ng-switch-when="true" ng-include="'logout'"></div>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries -->
+    <script type="text/javascript" src="libraries/scripts/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="libraries/scripts/1.0.3/angular.min.js"></script>
+    
+    <!-- Application javascript code -->
+    <script type="text/ng-template" id="login">
+        <input id="txtLoginData" type="text" ng-model="loginData" />
+        <button id="btnLogin" ng-click="$parent.$parent.loginData = !$parent.$parent.loginData">login: ngInclude scope {{$id}}: {{loginData}}. ngSwitchWhen scope {{$parent.$id}}: {{$parent.loginData}}. ngController scope {{$parent.$parent.$id}}: {{$parent.$parent.loginData}}</button><!-- $parent is ngSwitchWhen scope. $parent.$parent is ngController scope. So modify $parent.$parent.loginData means modify loginData of ngController scope -->
+    </script>
+
+    <script type="text/ng-template" id="logout">
+        <button ng-click="loginData = !loginData">logout: ngInclude scope {{$id}}: {{loginData}}. ngSwitchWhen scope {{$parent.$id}}: {{$parent.loginData}}. ngController scope {{$parent.$parent.$id}}: {{$parent.$parent.loginData}}</button><!-- $parent is ngSwitchWhen scope. $parent.$parent is ngController scope. So modify loginData will add new loginData property to ngInclude scope and update this new property in this scope -->
+    </script>
+    
+    <script>
+        var myApp = angular.module('myApp', []);
+        var loginCheckController = function($rootScope, $scope) {
+            console.log('root scope Id: ' + $rootScope.$id);
+            console.log('loginCheckController scope Id: ' + $scope.$id);
+            
+            $scope.loginData = false;
+        };
+        
+        myApp.controller('loginCheckController', loginCheckController);
+        
+        function onPageLoad() {
+            $('.ng-scope').each(function(index) {
+                var elementScope = angular.element(this).scope();
+                console.log('index ' + index + '. Element Id: ' + this.id + '. Scope Id: ' + elementScope.$id + '.');
+            });
+            var divControllerScope = angular.element(document.getElementById('divController')).scope();
+            console.log('divController scope Id: ' + divControllerScope.$id);
+            var divSwitchScope = angular.element(document.getElementById('divSwitch')).scope();
+            console.log('divSwitch scope Id: ' + divSwitchScope.$id);
+            var divLoginScope = angular.element(document.getElementById('divLogin')).scope();
+            console.log('divLogin scope Id: ' + divLoginScope.$id);
+            var btnLoginScope = angular.element(document.getElementById('btnLogin')).scope();
+            console.log('btnLogin scope Id: ' + btnLoginScope.$id);
+        }
+    </script>
+</body>
+</html>

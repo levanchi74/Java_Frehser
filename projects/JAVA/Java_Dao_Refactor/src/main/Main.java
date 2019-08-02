@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Main {
 	
-	public static final String DB_URL_MYSQL = "jdbc:mysql://localhost:3306/crud55"
+	public static final String DB_URL_MYSQL = "jdbc:mysql://localhost:3306/test"
 			+"?useUnicode=true"
 			+"&useJDBCCompliantTimezoneShift=true"
 			+"&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -17,9 +17,9 @@ public class Main {
 	//public static final String DB_URL_ORACLE = "jdbc:oracle:thin:localhost:3306";
 	
 	static {
-		System.setProperty("DB_URL",DB_URL_H2);
+		System.setProperty("DB_URL",DB_URL_MYSQL);
 		System.setProperty("DB_USER", "root");
-		System.setProperty("DB_PASS", "");
+		System.setProperty("DB_PASS", "root");
 	}
 	
 
@@ -36,13 +36,13 @@ public class Main {
 			//studentDao.createTable(conn);
 			//studentDao.insertData(conn);
 			
-//			List<Student> students =  studentDao.getAllStudents(conn);
-//			for(Student st:students) {
-//				System.out.println(st.getId() + st.getName());
-//			}
+			List<Student> students =  studentDao.getAllStudents(conn);
+			for(Student st:students) {
+				System.out.println(st.getId() + st.getName());
+			}
 			
 		
-			Student chile = new Student(3,"chi bao dep trai");
+			//Student chile = new Student(3,"chi bao dep trai");
 			//studentDao.insertStudent(chile, conn);
 			
 			/*
@@ -58,7 +58,7 @@ public class Main {
 			
 			//studentDao.deleteStudents(conn);
 			
-			studentDao.dropTableStudent(conn);
+			//studentDao.dropTableStudent(conn);
 			
 			
 		} catch (SQLException e) {

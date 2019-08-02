@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div ng-controller="ChoreCtrl">
+            Chore1: {{choreList.chore1}}. Chore2: {{choreList.chore2}}. Chore3: {{choreList.chore3}}.
+            <br />
+            <kid my-chore="{{choreList.chore1}}" done="logChore(chore)"></kid>
+            <br />
+            <kid my-chore="{{choreList.chore2}}" done="logChore(chore)"></kid>
+            <br />
+            <kid my-chore="{{choreList.chore3}}" done="logChore(chore)"></kid>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Custom Directive Isolated Scope";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Custom Directive code Begin -->
+    <script>
+        myApp.directive('kid', function() {
+            //return {
+            //    restrict: "E",
+            //    template: '<input type="text" ng-model="chore"> {{chore}}'
+            //};
+            
+            //return {
+            //    restrict: "E",
+            //    scope: {},
+            //    template: '<input type="text" ng-model="chore"> {{chore}}'
+            //};
+            
+            return {
+                restrict: "E",
+                scope: {
+                    myChore: "@",
+                    done: "&"
+                },
+                template: '<input type="text" ng-model="myChore"> {{myChore}} <button ng-click="done({chore: myChore})">I\'m done</button>'
+            };
+        });
+    </script>
+    <!-- Custom Directive code Begin -->
+
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.ChoreCtrl = ['$scope', function($scope) {
+            $scope.logChore = function(chore){
+                alert(chore + " is done!");
+            };
+            
+            $scope.choreList = {
+                chore1: "clean your room",
+                chore2: "wash the dishes",
+                chore3: "take out the garbage"
+            };
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

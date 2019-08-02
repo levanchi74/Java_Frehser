@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        input.ng-invalid {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div ng-controller="HelloWorldController">
+            <form name="myForm">
+                <div>
+                    <input name="myRequiredInput" ng-model="myRequiredInput" required />
+                    <p>The required input's valid state is: <b>{{myForm.myRequiredInput.$valid}}</b></p>
+                </div>
+                <hr />
+                <div>
+                    <input name="myEmailInput" ng-model="myEmailInput" type="email" />
+                    <p>The email input's valid state is: <b>{{myForm.myEmailInput.$valid}}</b></p>
+                </div>
+                <hr />
+                <div>
+                    Name: <input name="myName" ng-model="myName" required />
+                    <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">Name is required.</span>
+                </div>
+                <div>
+                    <h1>Name Field States:</h1>
+                    <span>$untouched: <b>{{myForm.myName.$untouched}}</b></span><br />
+                    <span>$touched: <b>{{myForm.myName.$touched}}</b></span><br />
+                    <span>$pristine: <b>{{myForm.myName.$pristine}}</b></span><br />
+                    <span>$dirty: <b>{{myForm.myName.$dirty}}</b></span><br />
+                    <span>$invalid: <b>{{myForm.myName.$invalid}}</b></span><br />
+                    <span>$valid: <b>{{myForm.myName.$valid}}</b></span><br />
+                    <span>$error: <b>{{myForm.myName.$error}}</b></span><br />
+                </div>
+                <hr />
+                <div>
+                    <h1>Form States:</h1>
+                    <span>$pristine: <b>{{myForm.$pristine}}</b></span><br />
+                    <span>$dirty: <b>{{myForm.$dirty}}</b></span><br />
+                    <span>$invalid: <b>{{myForm.$invalid}}</b></span><br />
+                    <span>$valid: <b>{{myForm.$valid}}</b></span><br />
+                    <span>$submitted: <b>{{myForm.$submitted}}</b></span><br />
+                    <span>$error: <b>{{myForm.$error}}</b></span><br />
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Form Validation";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.HelloWorldController = ['$scope', function($scope) {
+            $scope.myRequiredInput = "Hello";
+            $scope.myEmailInput = "";
+            $scope.myName = "";
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

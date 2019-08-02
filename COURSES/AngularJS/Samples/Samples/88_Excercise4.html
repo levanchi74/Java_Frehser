@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div ng-controller="HelloWorldController">
+            <p>{{text}}</p>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.0.3/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Excercise 4";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.HelloWorldController = ['$rootScope', '$scope', '$timeout', function($rootScope, $scope, $timeout) {
+            $scope.startedTime = new Date();
+            $scope.text = "Hello";
+            $scope.elapsed = 0;
+            
+            $scope.$watch('elapsed', function(){
+                if ($scope.elapsed > 0)
+                    $scope.text = $scope.text + " World";
+            });
+
+            $timeout(function(){
+                var delta = (new Date().getTime() - $scope.startedTime.getTime());
+                $scope.elapsed = Math.round(delta / 1000);
+                //$scope.$apply();
+            }, 3000);
+
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

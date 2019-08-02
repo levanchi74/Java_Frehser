@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div ng-controller="HelloWorldController">
+            <p>{{status}}</p>
+            <p>Default filter (currency and uppercase) in template:</p>
+            <div ng-repeat="data in dataArray | filter:{id:58656723}">
+                <li>Id: {{data.id | currency}} - Name: {{data.name | uppercase}}</li>
+            </div>
+            <hr />
+            <p>Custom IdGreater filter in template:</p>
+            <div ng-repeat="data in dataArray | IdGreater:20000000">
+                <li>Id: {{data.id}} - Name: {{data.name | lowercase}}</li>
+            </div>
+            <hr />
+            <p>Custom IdGreater filter in controller:</p>
+            <div ng-repeat="data in filteredDataArray">
+                <li>Id: {{data.id}} - Name: {{data.name | lowercase}}</li>
+            </div>
+            <hr />
+            <p>Original data:</p>
+            <div ng-repeat="data in dataArray">
+                <li>Id: {{data.id}} - Name: {{data.name}}</li>
+            </div>
+        </div>
+        <hr />
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Filters";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Filters code Begin -->
+    <script type="text/javascript" src="filters/IdGreater.js"></script>
+    <!-- Filters code End -->
+    
+    <!-- Services code Begin -->
+    <script type="text/javascript" src="services/GetDataService.js"></script>
+    <!-- Services code End -->
+    
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.HelloWorldController = ['$rootScope', '$scope', 'IdGreaterFilter', 'GetDataService', function($rootScope, $scope, IdGreaterFilter, GetDataService) {
+            $scope.status = "Loading...";
+            $scope.dataArray = [];
+            $scope.filteredDataArray = [];
+            var promise = GetDataService.getDataFromInternet();
+            promise.then(
+                value => {
+                    $scope.dataArray = value.data;
+                    $scope.filteredDataArray = IdGreaterFilter($scope.dataArray, 20000000);
+                    $scope.status = "Success!";
+                },
+                reason => {
+                    $scope.status = "Error: " + reason;
+                },
+                value => {
+                    $scope.status = "Notification: " + value;
+                }
+            );
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

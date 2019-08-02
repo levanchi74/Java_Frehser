@@ -120,3 +120,12 @@ CREATE TABLE student(id INT NOT NULL, name VARCHAR(255),PRIMARY KEY (id)) [42101
 2019-08-01 16:48:43 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
 CREATE TABLE student(id INT NOT NULL, name VARCHAR(255),PRIMARY KEY (id)) [42101-199]
+2019-08-02 09:24:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found; SQL statement:
+DROP TABLE student [42102-199]
+2019-08-02 09:34:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found; SQL statement:
+DROP TABLE student [42102-199]
+2019-08-02 09:57:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
+CREATE TABLE student(id INT NOT NULL, name VARCHAR(255),PRIMARY KEY (id)) [42101-199]

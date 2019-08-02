@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="loginCheckController">
+        <div ng-switch on="loginData"> 
+            <div ng-switch-when="false" ng-include="'login'"></div>
+            <div ng-switch-when="true" ng-include="'logout'"></div>
+        </div>
+    </div>
+    
+    <!-- Core javascript libraries -->
+    <script type="text/javascript" src="libraries/scripts/1.0.3/angular.min.js"></script>
+    
+    <!-- Application javascript code -->
+    <script type="text/ng-template" id="login">
+        <button ng-click="login()">Login</button>
+    </script>
+
+    <script type="text/ng-template" id="logout">
+        <button ng-click="logout()">Logout</button>
+    </script>
+    
+    <script>
+        var myApp = angular.module('myApp', []);
+        var loginCheckController = function($scope) {
+            $scope.loginData = false;
+            $scope.login = function() {
+                console.log($scope.loginData  ? 'logged in' : 'not logged in');
+                $scope.loginData = !$scope.loginData;
+            };
+            $scope.logout = function() {
+                console.log($scope.loginData ? 'logged in' : 'not logged in');
+                $scope.loginData = !$scope.loginData;
+            };
+        };
+        
+        myApp.controller('loginCheckController', loginCheckController);
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div>
+        <p>JavaScript Prototypal Inheritance</p>
+    </div>
+    
+    <!-- Pure javascript code -->
+    <script>
+        function ParentScope(){
+            this.aString = "parent string";
+            this.aNumber = 100;
+            this.anArray = [10,20,30];
+            this.anObject = {'property1': 'parent prop1', 'property2': 'parent prop2' };
+            this.aFunction = function(){ console.log('parent output'); }
+        }
+
+        function ChildScope(){
+        }
+        ChildScope.prototype = new ParentScope();
+
+        var childScope = new ChildScope();
+        
+        //#########################1
+        console.log( "####################### Example 1" );
+        console.log( childScope.aString );   //not in child, prototype chain followed... parent's property found.
+        childScope.aString = 'child string'; //when doing a primitive like this, it creates a new property on child object (vs if thought it would update the parent object's aString property)
+        console.log( childScope.aString );
+        console.log('Parent Scope: ' + childScope.__proto__.aString);
+        
+        //#########################2
+        console.log( "####################### Example 2" );
+        console.log( childScope.anArray[1] ); //updates the parent object's property
+        console.log( childScope.anObject.property1 );//updates the parent object's property
+        childScope.anArray[1] = 22;
+        childScope.anObject.property1 = 'child prop1';
+        console.log( childScope.anArray[1] );
+        console.log( childScope.anObject.property1 );
+        console.log('Parent Scope: ' + childScope.__proto__.anArray[1]);
+        console.log('Parent Scope: ' + childScope.__proto__.anObject.property1);
+        
+        //#########################3
+        console.log( "####################### Example 3" );
+        console.dir( childScope.anArray );
+        console.dir( childScope.anObject );
+        childScope.anArray = [100, 555]; //creates a new object on child object
+        childScope.anObject = { name: 'Mark', country: 'USA' };
+        console.dir( childScope.anArray );
+        console.dir( childScope.anObject );
+        
+        console.log("child scope: " +childScope.anArray[1]);
+        console.log("child scope: " +childScope.anObject.name);
+        
+        console.dir( childScope.__proto__.anArray );
+        console.dir( childScope.__proto__.anObject );
+        
+        //#########################4
+        console.log( "####################### Example 4" );
+        delete childScope.anArray; //child's property deleted, parent's property still remains and 'shines' through though
+        console.log(childScope.anArray[1] === 22);  // true, parent's property looked at
+        
+        console.dir( childScope.anArray );
+    </script>
+</body>
+</html>
+

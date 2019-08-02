@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div ng-app="myApp">
+        <p>{{title}}</p>
+        <hr />
+        <div ng-controller="HelloWorldController">
+            <p>path: {{pathString}}</p>
+            <p>search: {{searchString}}</p>
+            <p>hash: {{hashString}}</p>
+        </div>
+        <hr />
+    </div>
+    
+    <!-- Core javascript libraries Begin -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    <!-- Core javascript libraries End -->
+
+    <!-- Application javascript code Begin -->
+    <!-- Main app module code Begin -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.title = "Location Service file:///D:/Solutions/AngularJSTraining/Samples/68_LocationService.html#!/bar?baz=23#baz";
+        }]);
+        
+    </script>
+    <!-- Main app module code End -->
+    
+    <!-- Controllers code Begin -->
+    <script>
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.HelloWorldController = ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
+            $scope.pathString = $location.path();
+            $scope.searchString = $location.search();
+            $scope.hashString = $location.hash();
+        }];
+    </script>
+    <!-- Controllers code End -->
+    <!-- Application javascript code End -->
+</body>
+</html>

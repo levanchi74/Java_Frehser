@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="profileController">
+        <p>New Full Name:<input type="text" ng-model="newFullName" /><button type="button" ng-click="addProfile();">Add</button></p>
+        <h1>Users</h1>
+        <div ng-repeat="profile in profiles">
+            <li>{{profile}}</li>
+        </div>
+        <h1>Number of Users: {{profiles.length}}</h1>
+    </div>
+    <hr />
+    <div ng-controller="contactController">
+        <p>New Address:<input type="text" ng-model="newContact" /><button type="button" ng-click="addContact();">Add</button></p>
+        <h1>Addresses</h1>
+        <div ng-repeat="contact in contacts">
+            <li>{{contact}}</li>
+        </div>
+        <h1>Number of Contacts: {{contacts.length}}</h1>
+    </div>
+    <hr />
+    <h1>Number of Users: {{profiles.length}}</h1>
+    <h1>Number of Contacts: {{contacts.length}}</h1>
+    
+    <!-- Core javascript libraries -->
+    <script type="text/javascript" src="libraries/scripts/1.6.4/angular.min.js"></script>
+    
+    <!-- Application javascript code -->
+    <script>
+        var myApp = angular.module('myApp', []);
+        
+        // Some initializing code before Angular invokes controllers
+        myApp.run(['$rootScope', function($rootScope) {
+            $rootScope.profiles = [];
+            $rootScope.contacts = [];
+        }]);
+        
+        var controllers = {};
+        myApp.controller(controllers);
+        
+        controllers.profileController = function($scope) {
+            $scope.newFullName = '';
+            
+             $scope.addProfile = function() {
+                $scope.profiles.push($scope.newFullName);
+            };
+        };
+        controllers.contactController = function($scope) {
+            $scope.newContact = '';
+            
+            $scope.addContact = function() {
+                $scope.contacts.push($scope.newContact);
+            };
+        };
+    </script>
+</body>
+</html>
