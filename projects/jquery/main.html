@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+
+    <style>
+    table tr:nth-child(even){background-color: #f2f2f2;}
+    
+    </style>
+</head>
+<body>
+    
+<table id="test">
+    <button>Click</button>
+    <tr>
+        <th>
+            <th>userId</th>
+            <th>id</th>
+            <th>title</th>
+            <th>body</th>
+        </th>
+    </tr>
+    
+
+</table>
+
+
+<script>
+
+
+
+ $('table > tbody > tr').click(function() {
+       
+       console.log("href")
+   });
+
+
+
+
+$("button").click(function(){
+
+
+  $.get("https://jsonplaceholder.typicode.com/posts", function(data, status){
+
+   
+
+      data.forEach(element => {
+        var str = '<tr>'
+                +'<td>'  + element.userId +'/<td>'
+                +'<td>'  + element.id +'/<td>'
+                +'<td>'  + element.title +'/<td>'
+                +'<td>'  + element.body +'/<td>'
+                + '</tr>'
+        $("table").append(str);
+
+
+      });
+   
+  });
+});
+</script>
+
+
+</body>
+</html>

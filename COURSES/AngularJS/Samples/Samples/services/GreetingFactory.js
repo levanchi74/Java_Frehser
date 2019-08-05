@@ -4,3 +4,4 @@ myApp.factory("GreetingFactory", function () {
         this.greetingMessage = "Hello";
     };
 });
+// Factory la phan rut gon cua Provider
