@@ -1,4 +1,4 @@
-myApp.provider("GreetingProvider", function () {
+myApp.provider("GreetingProvider", function () { // param 1 -> ten , pram 2 -> 
     var nameInProvider = "";
     var greetingMessageInProvider = "";
     this.setupGreetingProvider = function (nameString, greetingMessageString) {

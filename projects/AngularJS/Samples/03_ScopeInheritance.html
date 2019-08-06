@@ -4,9 +4,10 @@
 </head>
 <body>
     <div ng-app="myApp">
+     
         <p>{{title}}</p>
         <div ng-controller="HelloWorldCtrl">
-            <p ng-show="enableName(1,2);">Input something in the input box</p>
+            <p ng-show="enableName(false);">Input something in the input box</p>
             <p>Name: <input type="text" ng-model="name" /></p>
             <p ng-bind="name"></p>
         </div>
@@ -21,7 +22,7 @@
         app.controller("HelloWorldCtrl", function($rootScope, $scope) {  
             $rootScope.title = "test application";
             $scope.name="Hello World" ;
-            $scope.enableName = function(x, y){return (x+ y) % 2 == 0;}
+            $scope.enableName = function(x){return x == true;}
         });
     </script>
 </body>

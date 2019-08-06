@@ -5,6 +5,7 @@
 <body id="mybody">
     <div ng-controller="MyController">
         Hello {{greetMe}}!
+        Hello {{chile}}
     </div>
     
     <!-- Core javascript libraries -->
@@ -14,6 +15,7 @@
     <script>
         angular.module('myApp', []).controller('MyController', ['$scope', function ($scope) {
             $scope.greetMe = 'World';
+            $scope.chile ="chile";
         }]);
         
         angular.element(function() {
