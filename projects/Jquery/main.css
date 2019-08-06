@@ -1,0 +1,13 @@
+.test {
+  color: #ff00ff;
+  background-color: red;
+}
+
+.hover {
+  background-color: #ddd !important;
+}
+
+.tr-odd {
+  background-color: #f2f2f2;
+}
+/*# sourceMappingURL=main.css.map */
