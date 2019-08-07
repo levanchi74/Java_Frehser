@@ -21,3 +21,6 @@ String str2 = "A"
 
 https://www.javatpoint.com/java-jdbc
 testgit
+
+
+Xong bài tập angularJS trước thứ 2. kiếm thầy nộp

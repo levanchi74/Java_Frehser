@@ -91,11 +91,7 @@
 		    <version>1.4.196</version>
 	
 		</dependency>
-		<dependency>
-			<groupId>com.csc.integral.libs</groupId>
-			<artifactId>ojdbc7</artifactId>
-			<version>12.1.0.2</version>
-		</dependency>
+	
 		<!-- <dependency>
 			<groupId>com.csc.integral.libs</groupId>
 			<artifactId>sqljdbc</artifactId>

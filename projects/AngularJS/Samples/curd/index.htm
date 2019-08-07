@@ -1,0 +1,34 @@
+ <!-- <h1>{{test}}</h1> -->
+ <div class="row" style="margin:40px 0">
+        <form ng-controller="createUserCtrl">
+            ID: <input type="text" ng-model="id">
+            First Name: <input type="text" ng-model="firstName"> 
+            Last Name: <input type="text" ng-model="lastName"> &nbsp; &nbsp; 
+            <button class="btn btn-primary" ng-click="addUser()">New user</button>
+        </form>
+    </div>
+    <div class="row">
+    
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat = "user in users">
+                        <th scope="row">1</th>
+                        <td>{{user.id}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td><a href="#!view/{{user.id}}" class="btn btn-success">Show</a></td>
+                        <td><button class="btn btn-warning">Edit</button></td>
+                        <td><button class="btn btn-danger">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

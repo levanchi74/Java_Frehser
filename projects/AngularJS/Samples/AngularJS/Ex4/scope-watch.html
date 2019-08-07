@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../lib/angular.min.js"></script>
+    <title>Ex4</title>
+</head>
+<body ng-app="messageApp">
+    <div ng-controller="HelloController">
+        {{ text }} 
+        <br/>
+    </div>
+
+    <script>
+        var app = angular.module('messageApp',[]);
+        app.controller("HelloController", function($scope,$timeout){
+            $scope.startedTime = new Date();
+            
+            $scope.text = "Hello";
+            $scope.elapsed = 0;
+
+            $scope.$watch('elapsed', function(){
+                if($scope.elapsed > 0)
+                    $scope.text +="World";
+            });
+
+            $timeout(function(){
+                var delta = (new Date().getTime() - $scope.startedTime.getTime());
+                $scope.elapsed = Math.round(delta/1000);
+                $scope.$apply();
+            },3000);
+        });
+    
+    </script>
+</body>
+</html>
