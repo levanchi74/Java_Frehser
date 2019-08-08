@@ -1,0 +1,11 @@
+﻿Gộp nhiều Task -> Story
+
+INVEST
+independent
+negotiable: thống nhất được final solution
+valuable: 
+estimable: 
+small
+testable: detail , vd nhanh bao nhiêu s,...
+
+spike stories: làm break system, 
