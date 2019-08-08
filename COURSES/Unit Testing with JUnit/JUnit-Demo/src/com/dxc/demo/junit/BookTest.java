@@ -12,6 +12,6 @@ public class BookTest {
 	public void checkTitle() {
 		String message = "Hi There!";
 		Book book = new Book(message);
-		assertEquals("Checking book initialization", message, book.getTitle());
+		assertEquals("Checking book initialization", "Hi  Theree!", book.getTitle());
 	}
 }
