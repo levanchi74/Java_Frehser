@@ -11,7 +11,6 @@ public class ExceptionTest {
 	@Test(expected = FileNotFoundException.class)
 	public void testReadFile() throws IOException { 
 	    FileReader reader = new FileReader("test.txt"); 
-	   // System.out.println("chile");
 	    reader.read(); 
 	    reader.close();
 	} 
