@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  ng-app="myapp" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Final Project</title>
+
+    <script src="lib/angular.min.js"></script>
+    <link href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet"/>
+    
+
+
+    <script>
+        var app = angular.module("myapp", ['customFilters','cart','ngRoute']);
+        app.config(function($routeProvider){
+            $routeProvider.when('/checkout',{
+                templateUrl: "views/checkout.html"
+            })
+            $routeProvider.when('/books',{
+                templateUrl: "views/booklist.html"
+            })
+            $routeProvider.otherwise({
+                templateUrl: "views/booklist.html"
+            })
+        })
+    </script>
+    <script src="controllers/app.js"></script>
+    <script src="filters/customFilters.js"></script>
+    <script src="controllers/bookListController.js"></script>
+    <script src="directives/cartSummary/directive.js"></script>
+    <script src="services/cart.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+</head>
+<body ng-controller="mainCtrl">
+
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand" href="#">Books Store</a>
+        <cart-summary/>
+    </div>
+    <div ng-view=""></div>
+    
+</body>
+</html>

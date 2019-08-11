@@ -1,0 +1,24 @@
+<div class="alert alert-danger" ng-show="data.error">
+    Error ({{data.error.status}}). The book data was not loaded.
+    <a href="./index.html" class="alert-link">Click here to try again</a>
+</div>
+<div class="panel row" ng-controller="bookCtrl" ng-hide="data.error">
+    <div class="col-xs-3 well">
+        <a ng-click="selectCategory()" class="btn btn-block btn-lg">Home</a>
+        <a ng-repeat = "item in data.books | orderBy: 'category' | unique: 'category'"
+            ng-click="selectCategory(item)" class="btn btn-block btn-lg" ng-class="getCategoryClass(item)">{{item}}</a>
+    </div>
+    <div class="col-xs-8">
+        <div class="well" ng-repeat = "item in data.books | filter: filterByCategory">
+            <h3 >
+                <strong>{{item.name}}</strong>
+                <span class="pull-right label label-primary">
+                    {{item.price | currency}}
+                </span>
+                
+            </h3>
+            <span class="lead">{{item.description}}</span>
+            <button ng-click="addBookToCart(item)" class="btn btn-success pull-right">Add Cart</button>
+        </div>
+    </div>
+</div>
