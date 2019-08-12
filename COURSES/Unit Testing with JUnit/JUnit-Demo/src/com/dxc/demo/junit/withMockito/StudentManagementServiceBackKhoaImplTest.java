@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
@@ -70,6 +71,18 @@ public class StudentManagementServiceBackKhoaImplTest {
 		
 		// // Then / Verify
 		fail();
+	}
+	
+	
+	@Test(timeout = 3000)
+	public void test1() {
+		// Given / Setup
+		
+		while(true) {}
+		//When /
+		
+		// Then / Verify
+		
 	}
 
 	

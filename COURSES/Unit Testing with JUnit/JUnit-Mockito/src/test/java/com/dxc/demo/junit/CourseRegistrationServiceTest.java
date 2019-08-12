@@ -39,6 +39,7 @@ public class CourseRegistrationServiceTest { // maximum 4 courses
 		// Then that course is in my course list
 		// And I have 1 course
 		assertTrue(list.contains(course));
+		assert
 		Mockito.verify(daoService).addCourseForStudent(student, course);
 	}
 
