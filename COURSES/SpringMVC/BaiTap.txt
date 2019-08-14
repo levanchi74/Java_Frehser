@@ -1,0 +1,9 @@
+﻿Trang login có userpassword , button login 
+succsee ->  welcom , hiển thị thông tin username password, có button changpassword
+click btn -> form change -> success -> hiển thị thông báo, login lại 
+
+sử dụng database .
+sử dụng session, mô hình MVC
+sent to email: btong.war
+include: LeVanChi(sourcecode.zip, login.war).zip 
+dealine: hết khóa học 
